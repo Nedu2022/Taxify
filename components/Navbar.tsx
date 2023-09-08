@@ -1,22 +1,28 @@
-import { UserButton } from '@clerk/nextjs'
-import React from 'react'
+import Link from "next/link";
+import Image from "next/image";
 
-const Navbar = () => {
-  return (
-    <div className='flex justify-between p-3 px-10 border-b-[2px] shadow-md'>
-      <div className='flex gap-10 items-center'>
-        <h1 className='text-orange-500'>Taxify</h1>
+import CustomButton from "./CustomButton";
 
-        <div className='hidden md:flex gap-6'>
-          <h2 className='hover:bg-gray-100 p-2 rounded-md cursor-pointer transition-all'>Home</h2>
-          <h2 className='hover:bg-gray-100 p-2 rounded-md cursor-pointer transition-all'>History</h2>
-          <h2 className='hover:bg-gray-100 p-2 rounded-md cursor-pointer transition-all'>Help</h2>
-        </div>
-      
-      </div>
-      <UserButton afterSignOutUrl="/"/>
-    </div>
-  )
-}
+const NavBar = () => (
+  <header className='w-full  absolute z-10'>
+    <nav className='max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-4 bg-transparent'>
+      <Link href='/' className='flex justify-center items-center'>
+        <Image
+          src='/logo.svg'
+          alt='logo'
+          width={118}
+          height={18}
+          className='object-contain'
+        />
+      </Link>
 
-export default Navbar
+      <CustomButton
+        title='Sign in'
+        btnType='button'
+        containerStyles='text-primary-blue rounded-full bg-white min-w-[130px]'
+      />
+    </nav>
+  </header>
+);
+
+export default NavBar;
